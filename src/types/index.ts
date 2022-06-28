@@ -9,6 +9,9 @@ export interface Resource8base {
 
 export interface Board extends Resource8base {
   title: string;
+
+  // Board order JSON encoded in DB and thus can be a string
+  // when decoded it's an array of Columns
   order: string | Column[];
 
   // relationships
@@ -19,7 +22,7 @@ export interface Board extends Resource8base {
 export interface Column {
   id: ID;
   title: string;
-  taskUids: ID[];
+  taskIds: ID[];
 }
 
 export interface Task extends Resource8base {
