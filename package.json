@@ -19,6 +19,18 @@
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
+    "@progress/kendo-licensing": "^1.2.2",
+    "@progress/kendo-theme-default": "^5.5.0",
+    "@progress/kendo-vue-animation": "^3.4.0",
+    "@progress/kendo-vue-buttons": "^3.4.0",
+    "@progress/kendo-vue-dialogs": "^3.4.0",
+    "@progress/kendo-vue-editor": "^3.4.0",
+    "@progress/kendo-vue-form": "^3.4.0",
+    "@progress/kendo-vue-indicators": "^3.4.0",
+    "@progress/kendo-vue-inputs": "^3.4.0",
+    "@progress/kendo-vue-layout": "^3.4.0",
+    "@progress/kendo-vue-notification": "^3.4.0",
+    "@progress/kendo-vue-popup": "^3.4.0",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/jsdom": "^16.2.14",
     "@types/node": "^16.11.41",

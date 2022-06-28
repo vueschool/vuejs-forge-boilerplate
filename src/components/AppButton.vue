@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { Button as KButton } from "@progress/kendo-vue-buttons";
+</script>
 <template>
-  <button class="bg-red-200"><slot></slot></button>
+  <KButton v-bind="$attrs">
+    <slot></slot>
+  </KButton>
 </template>
