@@ -12,8 +12,8 @@ export interface Board extends Resource8base {
   order: string | Column[];
 
   // relationships
-  image?: File;
-  tasks?: Task[];
+  image?: Partial<File>;
+  tasks?: Partial<Task>[];
 }
 
 export interface Column {
@@ -29,15 +29,15 @@ export interface Task extends Resource8base {
   dueAt: Date;
 
   // relationships
-  board?: Board;
-  comments?: Comment[];
+  board?: Partial<Board>;
+  comments?: Partial<Comment>[];
 }
 
 export interface Comment extends Resource8base {
   message: string;
 
   // relationships
-  task?: Task;
+  task?: Partial<Task>;
 }
 
 type LabelColor =
@@ -54,8 +54,8 @@ export interface Label extends Resource8base {
   color: LabelColor;
 
   // relationships
-  board?: Board;
-  tasks?: Task[];
+  board?: Partial<Board>;
+  tasks?: Partial<Task>[];
 }
 
 export interface File extends Resource8base {
