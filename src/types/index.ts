@@ -19,7 +19,7 @@ export interface Board extends Resource8base {
 export interface Column {
   id: ID;
   title: string;
-  taskUids: ID[];
+  taskIds: ID[];
 }
 
 export interface Task extends Resource8base {

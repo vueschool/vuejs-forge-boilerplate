@@ -13,11 +13,15 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@vueuse/core": "^8.7.5",
+    "lodash-es": "^4.17.21",
     "pinia": "^2.0.14",
     "unplugin-vue-components": "^0.20.1",
+    "uuid": "^8.3.2",
     "vite-plugin-pages": "^0.24.3",
     "vue": "^3.2.37",
-    "vue-router": "^4.0.16"
+    "vue-router": "^4.0.16",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@progress/kendo-licensing": "^1.2.2",
@@ -34,6 +38,7 @@
     "@progress/kendo-vue-popup": "^3.4.0",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/jsdom": "^16.2.14",
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "^16.11.41",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/eslint-config-prettier": "^7.0.0",
