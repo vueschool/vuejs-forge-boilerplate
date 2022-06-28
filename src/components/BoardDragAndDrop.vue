@@ -5,11 +5,14 @@ import type { Board, Column, Task } from "@/types";
 import { v4 as uuidv4 } from "uuid";
 import draggable from "vuedraggable";
 import TaskCard from "./TaskCard.vue";
+import { useAlerts } from "@/stores/Alerts";
+const alerts = useAlerts();
 
 // props
 const props = defineProps<{
   board: Board;
   tasks: Task[];
+  addTask(task: Partial<Task>): Promise<Task>;
 }>();
 
 // events
@@ -29,6 +32,17 @@ function addColumn() {
     title: "New Column",
     taskIds: [],
   });
+}
+
+async function addTask({ column, title }: { column: Column; title: string }) {
+  const newTask = { title };
+  try {
+    const savedTask = await props.addTask(newTask);
+    tasks.push({ ...savedTask });
+    column.taskIds.push(savedTask.id);
+  } catch (error) {
+    alerts.error("Error creating task!");
+  }
 }
 
 watch(columns, () => {
@@ -70,6 +84,7 @@ watch(columns, () => {
               </template>
             </draggable>
           </div>
+          <TaskCreator @create="addTask({ column, title: $event })" />
         </div>
       </template>
     </draggable>
