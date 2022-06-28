@@ -2,4 +2,5 @@
 
 <template>
   <TheDrawer />
+  <TheAlerts />
 </template>
