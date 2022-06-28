@@ -3,6 +3,7 @@ import { Popup as KPopup } from "@progress/kendo-vue-popup";
 import { Button as KButton } from "@progress/kendo-vue-buttons";
 import { ref } from "vue";
 import type { Board } from "@/types";
+import { onClickOutside } from "@vueuse/core";
 
 const props = defineProps<{
   board: Board;
@@ -10,6 +11,8 @@ const props = defineProps<{
 
 const show = ref(false);
 const menu = ref(null);
+onClickOutside(menu, () => setTimeout(() => (show.value = false), 2));
+
 defineEmits<{
   (e: "deleteBoard", payload: null): void;
 }>();
@@ -43,6 +46,13 @@ defineEmits<{
               <span class="k-icon k-i-delete"></span>
               Delete Board
             </button>
+          </li>
+          <li>
+            <strong>Board Image</strong>
+            <AppImageDropzone
+              class="aspect-video w-56"
+              :image="board.image?.downloadUrl"
+            />
           </li>
         </ul>
       </div>

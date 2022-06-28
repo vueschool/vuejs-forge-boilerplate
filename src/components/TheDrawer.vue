@@ -2,10 +2,11 @@
 import { Drawer, DrawerContent } from "@progress/kendo-vue-layout";
 import { useRouter } from "vue-router";
 import { computed, ref } from "vue";
+import { useLocalStorage } from "@vueuse/core";
 
 const router = useRouter();
 
-const expanded = ref(false);
+const expanded = useLocalStorage("app-drawer-expanded", false);
 const expandedIcon = computed(() =>
   expanded.value ? "k-i-arrow-chevron-left" : "k-i-arrow-chevron-right"
 );

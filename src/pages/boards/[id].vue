@@ -15,6 +15,11 @@ const board = ref<Partial<Board>>({
   id: boardId.value,
   title: "My First Board",
   order: JSON.stringify([{ id: "1", title: "backlog", taskIds: ["1", "2"] }]),
+
+  // if we add the image to the board the AppImageDropzone in the Board Menu gets the existing image
+  // image: {
+  //   downloadUrl: `https://picsum.photos/480/270?board=${boardId.value}`,
+  // },
 });
 
 const tasks = ref<Partial<Task>[]>([
