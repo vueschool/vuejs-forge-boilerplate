@@ -4,6 +4,8 @@ import { Button as KButton } from "@progress/kendo-vue-buttons";
 import { ref } from "vue";
 import type { Board } from "@/types";
 import { onClickOutside } from "@vueuse/core";
+import { useMutation } from "@vue/apollo-composable";
+import { ATTACH_IMAGE_TO_BOARD_MUTATION } from "@/graphql/queries/boards";
 
 const props = defineProps<{
   board: Board;
@@ -13,9 +15,23 @@ const show = ref(false);
 const menu = ref(null);
 onClickOutside(menu, () => setTimeout(() => (show.value = false), 2));
 
-defineEmits<{
+const emit = defineEmits<{
   (e: "deleteBoard", payload: null): void;
+  (e: "imageUpload", payload: { id: string }): void;
 }>();
+
+const {
+  mutate: attachImageToBoard,
+  onError: errorAttachingImage,
+  onDone: onImageAttached,
+  loading: imageLoading,
+} = useMutation(ATTACH_IMAGE_TO_BOARD_MUTATION);
+errorAttachingImage(() => {
+  alerts.error("Error setting board image");
+});
+onImageAttached((result) => {
+  emit("imageUpload", result.data.boardUpdate.image);
+});
 </script>
 <template>
   <div>
@@ -52,6 +68,13 @@ defineEmits<{
             <AppImageDropzone
               class="aspect-video w-56"
               :image="board.image?.downloadUrl"
+              :loading="imageLoading"
+              @upload="
+                attachImageToBoard({
+                  id: board.id,
+                  imageId: $event.id,
+                })
+              "
             />
           </li>
         </ul>

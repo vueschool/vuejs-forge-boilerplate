@@ -90,3 +90,17 @@ export const CREATE_TASK_ON_BOARD_MUTATION = gql`
     }
   }
 `;
+
+export const ATTACH_IMAGE_TO_BOARD_MUTATION = gql`
+  mutation attachImageToBoard($id: ID!, $imageId: ID!) {
+    boardUpdate(
+      filter: { id: $id }
+      data: { image: { reconnect: { id: $imageId } } }
+    ) {
+      image {
+        id
+        downloadUrl
+      }
+    }
+  }
+`;

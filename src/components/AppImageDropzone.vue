@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useDropZone, useBase64 } from "@vueuse/core";
 import { ref, computed } from "vue";
+import use8baseStorage from "@/composables/use8baseStorage";
 
 const props = defineProps<{
   placeholder?: string;
   image?: string;
+  loading?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -15,6 +17,7 @@ const emit = defineEmits<{
 const image = ref(props.image);
 const dropZoneRef = ref(null);
 const { base64 } = useBase64(image);
+const uploadingToFilestack = ref(false);
 const src = computed(() =>
   typeof image.value === "string" ? image.value : base64.value
 );
@@ -28,12 +31,15 @@ function onDrop(files: File[] | null) {
   handleFiles(files);
 }
 
+const { uploadAsset } = use8baseStorage();
 async function handleFiles(files: FileList | File[] | null) {
   if (!files) return;
   image.value = files[0];
 
-  // this is where we'll actually upload the image later in the project
-  //   emit("upload", the uploaded image);
+  uploadingToFilestack.value = true;
+  const res = await uploadAsset(files[0]);
+  emit("upload", res?.data.fileCreate);
+  uploadingToFilestack.value = false;
 }
 
 const { isOverDropZone } = useDropZone(dropZoneRef, onDrop);
@@ -60,5 +66,6 @@ const { isOverDropZone } = useDropZone(dropZoneRef, onDrop);
     <template v-else>{{
       placeholder || "Click or drop to upload image"
     }}</template>
+    <AppLoader v-if="loading || uploadingToFilestack" :overlay="true" />
   </div>
 </template>

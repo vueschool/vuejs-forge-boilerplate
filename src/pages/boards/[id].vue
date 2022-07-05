@@ -100,7 +100,11 @@ onDoneCreatingTask((res) => {
           :value="board.title"
         />
       </AppPageHeading>
-      <BoardMenu :board="board" @deleteBoard="deleteBoardIfConfirmed" />
+      <BoardMenu
+        :board="board"
+        @deleteBoard="deleteBoardIfConfirmed"
+        @imageUpload="refetchBoard()"
+      />
     </div>
 
     <BoardDragAndDrop
