@@ -27,7 +27,13 @@ const {
   loading: loadingBoard,
   onError: onBoardError,
   refetch: refetchBoard,
-} = useQuery(GET_BOARD_QUERY, { id: boardId.value });
+} = useQuery(
+  GET_BOARD_QUERY,
+  { id: boardId.value },
+  {
+    fetchPolicy: "cache-and-network",
+  }
+);
 onBoardError(() => alerts.error("Error loading board"));
 const board = computed(() => boardData.value?.board || null);
 const tasks = computed(() => board.value?.tasks?.items);
