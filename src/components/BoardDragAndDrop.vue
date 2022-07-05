@@ -67,7 +67,15 @@ watch(columns, () => {
           class="column bg-gray-100 flex flex-col justify-between rounded-lg px-3 py-3 rounded mr-4 w-[300px]"
         >
           <div>
-            <h3>{{ column.title }}</h3>
+            <h3>
+              <input
+                type="text"
+                :value="column.title"
+                class="bg-transparent mb-2"
+                @keydown.enter="($event.target as HTMLInputElement).blur()"
+                @blur="column.title = ($event.target as HTMLInputElement).value"
+              />
+            </h3>
             <draggable
               :list="column.taskIds"
               group="tasks"
