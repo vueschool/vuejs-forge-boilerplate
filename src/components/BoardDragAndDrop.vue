@@ -41,6 +41,7 @@ async function addTask({ column, title }: { column: Column; title: string }) {
     tasks.push({ ...savedTask });
     column.taskIds.push(savedTask.id);
   } catch (error) {
+    console.log(error);
     alerts.error("Error creating task!");
   }
 }

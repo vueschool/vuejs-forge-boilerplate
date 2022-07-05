@@ -7,6 +7,7 @@ import {
   GET_BOARD_QUERY,
   DELETE_BOARD_MUTATION,
   UPDATE_BOARD_MUTATION,
+  CREATE_TASK_ON_BOARD_MUTATION,
 } from "@/graphql/queries/boards";
 import { v4 as uuidv4 } from "uuid";
 import AppLoader from "../../components/AppLoader.vue";
@@ -49,16 +50,32 @@ async function deleteBoardIfConfirmed() {
   }
 }
 
+// handle create task
+const {
+  mutate: createTaskOnBoard,
+  onError: onErrorCreatingTask,
+  onDone: onDoneCreatingTask,
+} = useMutation(CREATE_TASK_ON_BOARD_MUTATION);
+let taskResolve = (task: Task) => {};
+let taskReject = (message: Error) => {};
 function addTask(task: Task) {
   return new Promise((resolve, reject) => {
-    const taskWithId = {
+    taskResolve = resolve;
+    taskReject = reject;
+    createTaskOnBoard({
+      boardId: boardId.value,
       ...task,
-      id: uuidv4(),
-    };
-    tasks.value.push(taskWithId);
-    resolve(taskWithId);
+    });
   });
 }
+onErrorCreatingTask((error) => {
+  taskReject(error);
+  alerts.error("Error creating task");
+});
+onDoneCreatingTask((res) => {
+  taskResolve(res.data.boardUpdate.tasks.items[0]);
+  alerts.success("New task created!");
+});
 </script>
 <template>
   <div v-if="board">

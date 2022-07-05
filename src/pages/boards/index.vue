@@ -45,7 +45,7 @@ const newBoardTemplate = {
     {
       uid: "1",
       title: "Backlog",
-      taskUids: [],
+      taskIds: [],
     },
   ]),
 };
