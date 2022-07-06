@@ -115,4 +115,5 @@ onDoneCreatingTask((res) => {
     />
   </div>
   <AppLoader v-if="loadingBoard" :overlay="true" />
+  <RouterView />
 </template>
