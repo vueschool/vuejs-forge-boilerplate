@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Popup as KPopup } from "@progress/kendo-vue-popup";
 import { Button as KButton } from "@progress/kendo-vue-buttons";
-import { ref } from "vue";
-import type { Board } from "@/types";
+import { ref, reactive } from "vue";
+import type { Board, Label } from "@/types";
 import { onClickOutside } from "@vueuse/core";
 import { useMutation } from "@vue/apollo-composable";
 import { ATTACH_IMAGE_TO_BOARD_MUTATION } from "@/graphql/queries/boards";
@@ -31,6 +31,15 @@ errorAttachingImage(() => {
 });
 onImageAttached((result) => {
   emit("imageUpload", result.data.boardUpdate.image);
+});
+
+const fakeLabelData = reactive({
+  existingLabels: [
+    { label: "High Priority", color: "red", id: "1" },
+    { label: "Medium Priority", color: "orange", id: "2" },
+    { label: "Meh", color: "yellow", id: "3" },
+  ],
+  selectedLabels: [{ label: "High Priority", color: "red", id: "1" }],
 });
 </script>
 <template>
@@ -75,6 +84,18 @@ onImageAttached((result) => {
                   imageId: $event.id,
                 })
               "
+            />
+          </li>
+          <li>
+            <pre>
+              {{ fakeLabelData.existingLabels }}
+            </pre>
+
+            <AppLabelsPicker
+              :labels="fakeLabelData.existingLabels"
+              :selected="fakeLabelData.selectedLabels"
+              @labelsUpdate="fakeLabelData.existingLabels = $event"
+              @selectionUpdate="fakeLabelData.selectedLabels = $event"
             />
           </li>
         </ul>
