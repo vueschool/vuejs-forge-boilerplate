@@ -49,21 +49,6 @@ function onSelect({ itemIndex }: { itemIndex: number }) {
 }
 </script>
 <template>
-  <div class="p-2">
-    <div
-      :style="{
-        width: !expanded ? '30px' : 'auto',
-      }"
-      class="w-[150px] k-drawer overflow-hidden"
-    >
-      <img
-        src="https://vuejsforge.com/images/logo.svg"
-        width="150"
-        class="max-w-none"
-        alt="Vue.js Forge"
-      />
-    </div>
-  </div>
   <Drawer
     class="h-[90vh]"
     :expanded="expanded"
@@ -74,7 +59,7 @@ function onSelect({ itemIndex }: { itemIndex: number }) {
     @select="onSelect"
   >
     <DrawerContent>
-      <div class="px-5">
+      <div class="p-10">
         <router-view />
       </div>
     </DrawerContent>

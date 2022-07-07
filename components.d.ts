@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     TaskCreator: typeof import('./src/components/TaskCreator.vue')['default']
     TheAlerts: typeof import('./src/components/TheAlerts.vue')['default']
     TheDrawer: typeof import('./src/components/TheDrawer.vue')['default']
+    TheNavbar: typeof import('./src/components/TheNavbar.vue')['default']
   }
 }
 
