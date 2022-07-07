@@ -18,8 +18,10 @@ export const BOARDS_LIST_QUERY = gql`
 `;
 
 export const BOARD_CREATE_MUTATION = gql`
-  mutation boardCreate($title: String!, $order: JSON!) {
-    boardCreate(data: { title: $title, order: $order }) {
+  mutation boardCreate($title: String!, $order: JSON!, $teamId: ID!) {
+    boardCreate(
+      data: { title: $title, order: $order, team: { connect: { id: $teamId } } }
+    ) {
       id
       title
       order

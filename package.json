@@ -13,11 +13,13 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@8base/auth": "^2.6.6",
     "@apollo/client": "^3.6.9",
     "@progress/kendo-vue-dateinputs": "^3.4.1",
     "@vue/apollo-composable": "^4.0.0-alpha.18",
     "@vueuse/core": "^8.7.5",
     "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0",
     "graphql-tag": "^2.12.6",
     "lodash-es": "^4.17.21",
     "pinia": "^2.0.14",
@@ -65,5 +67,10 @@
     "vite": "^2.9.12",
     "vitest": "^0.15.1",
     "vue-tsc": "^0.38.1"
+  },
+  "overrides": {
+    "graphql-prettier": {
+      "graphql": ">=15.0.0"
+    }
   }
 }

@@ -3,6 +3,7 @@ import type { Board } from "@/types";
 import { computed } from "vue";
 import { useAlerts } from "@/stores/Alerts";
 import { useQuery, useMutation } from "@vue/apollo-composable";
+import { useAuthUserStore } from "@/stores/AuthUserStore";
 import {
   BOARDS_LIST_QUERY,
   BOARD_CREATE_MUTATION,
@@ -11,6 +12,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 const alerts = useAlerts();
+const authUseStore = useAuthUserStore();
 
 const loading = computed(() => loadingBoards.value || creatingBoard.value);
 
@@ -39,16 +41,19 @@ onBoardCreated((res) => {
 });
 onBoardError(() => alerts.error("Error creating board"));
 
-const newBoardTemplate = {
-  title: "My New Board",
-  order: JSON.stringify([
-    {
-      uid: "1",
-      title: "Backlog",
-      taskIds: [],
-    },
-  ]),
-};
+const newBoardTemplate = computed(() => {
+  return {
+    teamId: authUseStore.user.team.items[0].id,
+    title: "My New Board",
+    order: JSON.stringify([
+      {
+        uid: "1",
+        title: "Backlog",
+        taskIds: [],
+      },
+    ]),
+  };
+});
 </script>
 
 <template>
