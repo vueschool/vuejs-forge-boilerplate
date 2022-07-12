@@ -5,7 +5,7 @@ import use8baseStorage from "@/composables/use8baseStorage";
 
 const props = defineProps<{
   placeholder?: string;
-  image?: string;
+  image: string;
   loading?: boolean;
 }>();
 
@@ -14,8 +14,10 @@ const emit = defineEmits<{
 }>();
 
 // data
-const image = ref(props.image);
+const image = ref<string | File>(props.image);
 const dropZoneRef = ref(null);
+
+//@ts-expect-error is checked in src for string type
 const { base64 } = useBase64(image);
 const uploadingToFilestack = ref(false);
 const src = computed(() =>

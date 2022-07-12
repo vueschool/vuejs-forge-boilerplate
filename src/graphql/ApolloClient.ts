@@ -32,6 +32,7 @@ const cache = new InMemoryCache();
 // Error handling
 const setErrorHandler = onError((error) => {
   const badToken = !!error.response?.errors?.find(
+    // @ts-expect-error it does have a code prop so not sure why type doesn't
     (e) => e.code === "TokenExpiredError" || e.code === "InvalidTokenError"
   );
   if (badToken) {

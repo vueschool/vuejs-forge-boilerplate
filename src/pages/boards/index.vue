@@ -43,7 +43,8 @@ onBoardError(() => alerts.error("Error creating board"));
 
 const newBoardTemplate = computed(() => {
   return {
-    teamId: authUseStore.user.team.items[0].id,
+    // @ts-expect-error team is nested under items since coming from graphQL
+    teamId: authUseStore?.user?.team.items[0].id,
     title: "My New Board",
     order: JSON.stringify([
       {

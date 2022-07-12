@@ -133,7 +133,8 @@ const handleNewComment = () => {
               <strong class="text-xs mb-2 block" for="calendar"
                 >Task Due Date</strong
               >
-              <KCalendar v-model="taskCopy.dueAt" />
+
+              <KCalendar v-model="taskCopy.dueAt" :views="Date.now()" />
             </li>
           </ul>
         </aside>

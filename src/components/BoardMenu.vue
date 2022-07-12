@@ -6,6 +6,9 @@ import type { Board, Label } from "@/types";
 import { onClickOutside } from "@vueuse/core";
 import { useMutation } from "@vue/apollo-composable";
 import { ATTACH_IMAGE_TO_BOARD_MUTATION } from "@/graphql/queries/boards";
+import { useAlerts } from "@/stores/Alerts";
+
+const alerts = useAlerts();
 
 const props = defineProps<{
   board: Board;

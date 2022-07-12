@@ -2,7 +2,7 @@
 import { ref, nextTick } from "vue";
 import { Input as KInput } from "@progress/kendo-vue-inputs";
 const active = ref(false);
-const input = ref<HTMLInputElement>(null);
+const input = ref<HTMLInputElement | null>(null);
 const value = ref("");
 const emit = defineEmits<{
   (e: "create", payload: string): void;
@@ -11,7 +11,7 @@ const emit = defineEmits<{
 
 const handleActivate = () => {
   active.value = true;
-  nextTick(() => input.value.focus());
+  nextTick(() => (input.value ? input.value.focus() : null));
 };
 const handleEnter = () => {
   emit("create", value.value);
