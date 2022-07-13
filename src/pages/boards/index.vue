@@ -1,10 +1,32 @@
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
 
-const boards = ref(["My First Board", "My Second Board", "My Third Board"]);
+const boards = ref([
+  {
+    id: '1',
+    title: 'My First Board',
+    order: '[]',
+    image: {
+      downloadUrl: 'https://picsum.photos/480/270?board=1',
+    },
+  },
+  {
+    id: '2',
+    title: 'My Second Board',
+    order: '[]',
+    image: {
+      downloadUrl: 'https://picsum.photos/480/270?board=2',
+    },
+  },
+  {
+    id: '3',
+    title: 'My Third Board',
+    order: '[]',
+  },
+]);
 
-function createNewBoard () {
-  console.log("create new board");
+function createNewBoard() {
+  console.log('create new board');
 }
 </script>
 
@@ -13,21 +35,13 @@ function createNewBoard () {
     <h2>Boards</h2>
     <!-- boards -->
     <div class="boards-wrapper">
-      <div
-        v-for="board in boards"
-        :key="board.id"
-        class="board-box"
-      >
-        <img
-          src="../../assets/temp_1.jpg"
-          alt="bg-image"
-        />
-        <p>{{ board }}</p>
+      <div v-for="board in boards" :key="board.id" class="board-box">
+        <router-link :to="`/boards/${board.id}`">
+          <img src="../../assets/temp_1.jpg" alt="bg-image" />
+          <p>{{ board.title }}</p>
+        </router-link>
       </div>
-      <button
-        class="new-board"
-        @click="createNewBoard()"
-      >New board +</button>
+      <button class="new-board" @click="createNewBoard()">New board +</button>
     </div>
   </div>
 </template>

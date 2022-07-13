@@ -6,8 +6,12 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppButton: typeof import('./src/components/AppButton.vue')['default']
+    AppDropzone: typeof import('./src/components/AppDropzone.vue')['default']
+    AppImageDropzone: typeof import('./src/components/AppImageDropzone.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TheDrawer: typeof import('./src/components/TheDrawer.vue')['default']
+    TheNavbar: typeof import('./src/components/TheNavbar.vue')['default']
   }
 }
 
