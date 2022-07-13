@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Board } from '@/types';
 import { useRoute } from 'vue-router';
+import ImageDropzone from "@/components/ImageDropzone.vue";
 
 const $route = useRoute()
 
@@ -16,7 +17,5 @@ const board: Board = {
 </script>
 
 <template>
-    <div>
-        <h1>Board Page {{board.id}}</h1>
-    </div>
+  <ImageDropzone />
 </template>
