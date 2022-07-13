@@ -20,9 +20,12 @@ import type { Board } from '@/types';
 import { useRouter, type RouteLocationRaw } from 'vue-router';
 import { ref } from 'vue';
 import type { Ref } from 'vue';
+import { useAlerts } from '@/stores/alerts';
 
 
 const $router = useRouter()
+
+const $alerts = useAlerts()
 
 const boards: Ref<Board[]> = ref([
     {
@@ -67,5 +70,7 @@ const createBoard = () => {
     }
 
     boards.value.push(board)
+
+    $alerts.success(`Board Created: ${board.title}`)
 }
 </script>

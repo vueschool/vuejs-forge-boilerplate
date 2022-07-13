@@ -13,10 +13,12 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@types/uuid": "^8.3.4",
     "@vue/apollo-composable": "^4.0.0-alpha.18",
     "@vueuse/core": "^8.9.2",
     "graphql-tag": "^2.12.6",
     "lodash-es": "^4.17.21",
+    "pinia": "^2.0.16",
     "unplugin-vue-components": "^0.20.1",
     "uuid": "^8.3.2",
     "vite-plugin-pages": "^0.24.3",
