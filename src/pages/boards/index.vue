@@ -62,7 +62,7 @@ const createBoard = () => {
 
     const board: Board = {
         id: `board-${count}`,
-        title: `board-${count}`,
+        title: `Board ${count}`,
         order: `${count}`,
         createdAt: new Date,
         updatedAt: new Date,
