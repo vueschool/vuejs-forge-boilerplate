@@ -10,7 +10,6 @@ declare module '@vue/runtime-core' {
     ImageDropzone: typeof import('./src/components/ImageDropzone.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TheDrawer: typeof import('./src/components/TheDrawer.vue')['default']
   }
 }
 
