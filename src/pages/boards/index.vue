@@ -1,17 +1,17 @@
 <template>
-<div class="p-5">
-    <h1>Boards</h1>
-    <div class="flex flex-wrap">
-        <div v-for="board in boards" :key="board.id" @click="toBoard(board)" class="w-72 m-5 cursor-pointer border rounded border-transparent hover:border-gray-300">
-            <img :src="`https://via.placeholder.com/600x400?text=${board.title}`" />
-            <div class="p-2">{{ board.title }}</div>
-        </div>
+    <div class="p-5">
+        <h1>Boards</h1>
+        <div class="flex flex-wrap">
+            <div v-for="board in boards" :key="board.id" @click="toBoard(board)" class="w-72 m-5 cursor-pointer border rounded border-transparent hover:border-gray-300">
+                <img :src="`https://via.placeholder.com/600x400?text=${board.title}`" />
+                <div class="p-2">{{ board.title }}</div>
+            </div>
 
-        <div @click="createBoard()" class="w-72 m-5 cursor-pointer border rounded border-transparent hover:border-gray-300 flex items-center justify-center">
-            New Board +
+            <div @click="createBoard()" class="w-72 m-5 cursor-pointer border rounded border-transparent hover:border-gray-300 flex items-center justify-center">
+                New Board +
+            </div>
         </div>
     </div>
-</div>
 </template>
 
 <script setup lang="ts">
