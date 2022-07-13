@@ -3,14 +3,18 @@
 
 import { Button as KButton } from '@progress/kendo-vue-buttons';
 import { Popup as KPopup } from '@progress/kendo-vue-popup';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { Drawer, DrawerContent } from "@progress/kendo-vue-layout";
 import { useRouter, type RouteLocationRaw } from 'vue-router';
+import { useLocalStorage } from "@vueuse/core";
 
 
 const showTeamDropdown = ref(false);
 const $router = useRouter()
-const expanded = ref(true)
+const expanded = useLocalStorage("vue-force-drawer-expanded", true);
+const expandedIcon = computed(() =>
+    expanded.value ? "k-i-arrow-chevron-left" : "k-i-arrow-chevron-right"
+);
 const selected = ref(-1)
 
 const items = [{
@@ -36,17 +40,22 @@ const items = [{
   },
 }, {
   text: "Collapse",
-  icon: "k-i-arrow-60-left",
-  selected: true,
+  icon: expandedIcon,
   data: {
-    path: "/collapse",
-  },
+    action: () => (expanded.value = !expanded.value)
+   },
 }]
 
 const onSelect = (event: any) => {
   console.log('selected', event, items[event.itemIndex].data)
-  $router.push(items[event.itemIndex].data)
-  selected.value = event.itemIndex
+  const item = items[event.itemIndex];
+  if (item.data.path) {
+    $router.push(item.data);
+  }
+  if (typeof item.data.action === "function") {
+    item.data.action();
+  }
+  selected.value = event.itemIndex;
 }
 
 const toggleTeams = () => {
@@ -73,7 +82,8 @@ const toggleTeams = () => {
         <KButton rounded="full" shape="rectangle" icon="logout" theme-color="warning">Logout</KButton>
       </div>
     </div>
-    <Drawer class="flex-1" :expanded="expanded" position="start" mode="push" :mini="true" :items="
+    <Drawer class="flex-1" :expanded="expanded" position="start"
+            mode="push" :mini="true" :items="
       items.map((item, index) => ({
         ...item,
         selected: index === selected,

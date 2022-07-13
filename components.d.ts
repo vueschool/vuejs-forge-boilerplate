@@ -8,6 +8,7 @@ declare module '@vue/runtime-core' {
     AppButton: typeof import('./src/components/AppButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TheDrawer: typeof import('./src/components/TheDrawer.vue')['default']
   }
 }
 
