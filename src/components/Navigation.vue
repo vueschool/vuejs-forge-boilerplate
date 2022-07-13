@@ -1,10 +1,10 @@
 <template>
-    <nav>
-        <img src="https://vuejsforge.com/images/logo.svg" alt="Logo">
-        <div class="text-right">
-            <kendo-menu :items="items" />
-        </div>
-    </nav>
+  <nav>
+    <img src="https://vuejsforge.com/images/logo.svg" alt="Logo" />
+    <div class="text-right">
+      <kendo-menu :items="items" />
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -19,12 +19,22 @@ export default {
       items: [
         {
           text: "My Team",
+          icon: "ungroup",
           items: [
             { text: "Team 1" },
             {
               text: "Team 2",
             },
           ],
+        },
+        {
+          text: "Login",
+          cssStyle: {
+            backgroundColor: "#666666",
+            borderRadius: "4px",
+            padding: "0 3px",
+            color: "#FFFFFF"
+          },
         },
       ],
     };
@@ -40,8 +50,7 @@ nav {
 }
 
 nav img {
-
-    max-height: 26px;
-    max-width: 150px;
+  max-height: 26px;
+  max-width: 150px;
 }
 </style>
