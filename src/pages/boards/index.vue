@@ -1,11 +1,5 @@
 <template>
-  <div>Board</div>
+  <div>Boards</div>
 </template>
 
-<script>
-export default {
-  setup() {
-    return {};
-  },
-};
-</script>
+<script setup></script>
