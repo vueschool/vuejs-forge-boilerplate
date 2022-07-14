@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useBoardsStore } from '@/store/boards/index'
 import { useQuery } from "@vue/apollo-composable";
 import gql from "graphql-tag";
 
@@ -15,6 +16,10 @@ const { result, loading, error } = useQuery(gql`
     }
   }
 `);
+
+const boardsStore = useBoardsStore();
+boardsStore.getBoards();
+console.log("asdddd",boardsStore)
 </script>
 <template>
   <div class="mx-16 my-16 flex w-full">
