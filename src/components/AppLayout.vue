@@ -12,7 +12,7 @@
         </li>
       </ul>
     </navbar>
-    <section>
+    <section class="w-[82%]">
       <RouterView />
     </section>
   </div>
