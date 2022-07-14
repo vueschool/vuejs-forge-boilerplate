@@ -22,7 +22,7 @@ boardsStore.getBoards();
 console.log("asdddd",boardsStore)
 </script>
 <template>
-  <div class="mx-16 my-16 flex w-full">
+  <div class="mx-16 my-16 flex w-full justify-start gap-8">
     <span v-if="loading">Loading your boards...</span>
     <span v-else-if="error">Error: {{ error.message }}</span>
     <BoardCard

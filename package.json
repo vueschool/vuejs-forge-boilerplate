@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "@heroicons/vue": "^1.0.6",
     "@vue/apollo-composable": "^4.0.0-alpha.18",
+    "@vueuse/core": "^8.9.2",
     "graphql": "^16.5.0",
     "graphql-tag": "^2.12.6",
     "lodash-es": "^4.17.21",

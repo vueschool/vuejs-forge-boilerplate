@@ -6,9 +6,17 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppButton: typeof import('./src/components/AppButton.vue')['default']
+    AppHeader: typeof import('./src/components/AppHeader.vue')['default']
     AppLayout: typeof import('./src/components/AppLayout.vue')['default']
+    AppNavBar: typeof import('./src/components/AppNavBar.vue')['default']
     BoardCard: typeof import('./src/components/BoardCard.vue')['default']
+    BoardNavBar: typeof import('./src/components/BoardNavBar.vue')['default']
+    BoardWidget: typeof import('./src/components/BoardWidget.vue')['default']
+    CustomHeader: typeof import("./src/components/layout/custom-header.vue")["default"];
     DragAndDropArea: typeof import('./src/components/DragAndDropArea.vue')['default']
+    Header: typeof import("./src/components/layout/Header.vue")["default"];
+    Layout: typeof import("./src/components/Layout.vue")["default"];
+    Navbar: typeof import("./src/components/layout/Navbar.vue")["default"];
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TaskCard: typeof import('./src/components/TaskCard.vue')['default']
