@@ -20,18 +20,31 @@ const columns = reactive(cloneDeep(props.columns));
 </script>
 
 <template>
-  <div class="flex py-12 items-start">
+  <div class="flex h-4/5">
     <draggable
-      v-for="(column, i) in columns"
-      :key="i"
-      :list="column.tasks.items"
-      group="tasks"
+      :list="columns"
+      group="columns"
       item-key="id"
       ghost-class="ghost-card"
-      class="column bg-gray-100 flex flex-col justify-between rounded-lg px-3 py-3 rounded mr-4 w-[300px]"
+      class="flex w-full"
     >
-      <template #item="{ element: task }">
-        <TaskCard :task="task" class="mt-3 cursor-move" />
+      <template #item="{ element: column }">
+        <div class="bg-[#ebecf0] mr-4 p-2 rounded">
+          <p class="font-medium mb-1">{{ column.title }}</p>
+          <draggable
+            v-for="(column, i) in columns"
+            :key="i"
+            :list="column.tasks.items"
+            group="tasks"
+            item-key="id"
+            ghost-class="ghost-card"
+            class="w-[300px]"
+          >
+            <template #item="{ element: task }">
+              <TaskCard :task="task" class="mt-3 cursor-move" />
+            </template>
+          </draggable>
+        </div>
       </template>
     </draggable>
   </div>
