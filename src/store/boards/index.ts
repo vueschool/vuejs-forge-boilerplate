@@ -6,6 +6,8 @@ export const useBoardsStore = defineStore("boards", {
   state: () => {
     return {
       boards: [],
+      isFetchingBoards: false,
+      isErrorBoards: []
     };
   },
   actions: {
@@ -23,7 +25,12 @@ export const useBoardsStore = defineStore("boards", {
           }
         }
       `);
-      onResult(() => {console.log(result.value.boardsList.items)})
+      this.isFetchingBoards = loading;
+      onResult(() => {
+        this.boards = result.value.boardsList.items;
+        return this.boards
+      })
+      this.isErrorBoards = error;
     },
   },
 });
