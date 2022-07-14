@@ -13,6 +13,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@inkline/inkline": "^3.0.9",
     "@vue/apollo-composable": "^4.0.0-alpha.18",
     "graphql-tag": "^2.12.6",
     "lodash-es": "^4.17.21",
@@ -23,18 +24,6 @@
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
-    "@progress/kendo-licensing": "^1.2.2",
-    "@progress/kendo-theme-default": "^5.5.0",
-    "@progress/kendo-vue-animation": "^3.4.0",
-    "@progress/kendo-vue-buttons": "^3.4.0",
-    "@progress/kendo-vue-dialogs": "^3.4.0",
-    "@progress/kendo-vue-editor": "^3.4.0",
-    "@progress/kendo-vue-form": "^3.4.0",
-    "@progress/kendo-vue-indicators": "^3.4.0",
-    "@progress/kendo-vue-inputs": "^3.4.0",
-    "@progress/kendo-vue-layout": "^3.4.0",
-    "@progress/kendo-vue-notification": "^3.4.0",
-    "@progress/kendo-vue-popup": "^3.4.0",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/jsdom": "^16.2.14",
     "@types/lodash-es": "^4.17.6",
@@ -53,6 +42,7 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.14",
     "prettier": "^2.5.1",
+    "sass": "^1.53.0",
     "start-server-and-test": "^1.14.0",
     "tailwindcss": "^3.1.4",
     "typescript": "~4.7.4",
