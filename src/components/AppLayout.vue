@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import AppNavBar from "./AppNavBar.vue";
 import AppHeader from "./AppHeader.vue";
+import BoardNavBar from "./BoardNavBar.vue";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const routeName = computed(() => route.name);
 </script>
 <template>
   <AppHeader />
   <div class="flex h-[93vh] pt-10">
-    <AppNavBar />
-    <section class="overflow-auto ml-10">
+    <AppNavBar v-if="routeName !== 'board-id'" />
+    <BoardNavBar v-else />
+    <section class="overflow-x-auto ml-10">
       <transition>
         <RouterView />
       </transition>

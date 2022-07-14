@@ -11,7 +11,7 @@ const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
 </script>
 
 <template>
-  <RouterLink :to="`/boards/${board.id}`" class="w-1/4">
+  <RouterLink :to="`/board/${board.id}`" class="w-1/4">
     <Card class="relative h-40 w-60 bg-[#091e420a]">
       <div v-if="board?.image">
         <img
