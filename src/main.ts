@@ -4,7 +4,7 @@ import "@/assets/base.css";
 import "@progress/kendo-theme-default/dist/all.css";
 import { createApp, provide, h } from "vue";
 import { DefaultApolloClient } from "@vue/apollo-composable";
-
+import { createPinia } from 'pinia'
 import {
   ApolloClient,
   createHttpLink,
@@ -14,6 +14,8 @@ import {
 const httpLink = createHttpLink({
   uri: "https://api.8base.com/cl5jlrt7g0civ09lf2vwk5j3b",
 });
+
+const pinia = createPinia()
 
 const cache = new InMemoryCache();
 
@@ -29,6 +31,7 @@ const app = createApp({
 
   render: () => h(App),
 });
-app.use(router);
 
+app.use(router);
+app.use(pinia)
 app.mount("#app");
