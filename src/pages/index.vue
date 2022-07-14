@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useQuery } from "@vue/apollo-composable";
+import gql from "graphql-tag";
 const boards = [
   {
     title: "My Awesome Project",
@@ -34,6 +36,18 @@ const boards = [
     order: "",
   },
 ];
+
+//ejemplo de query
+const { result } = useQuery(gql`
+  query {
+    boardsList {
+      items {
+        title
+      }
+    }
+  }
+`);
+console.log("asd", result.value);
 </script>
 <template>
   <div class="mx-16 my-16 flex w-full">
