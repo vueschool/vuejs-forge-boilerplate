@@ -1,5 +1,4 @@
 <script setup lang="ts"></script>
-
 <template>
-  <AppLayout />
+  <div>User Settings</div>
 </template>

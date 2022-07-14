@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 // this works with the vite plugin to support file based routing
 import routes from "~pages";
 
+console.log("routes: ", routes);
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
