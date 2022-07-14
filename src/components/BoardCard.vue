@@ -3,7 +3,7 @@ import { Card, CardTitle } from "@progress/kendo-vue-layout";
 import type { Board } from "@/types";
 import { defineProps } from "vue";
 
-defineProps<{
+const props = defineProps<{
   board: Board;
 }>();
 

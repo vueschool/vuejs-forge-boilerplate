@@ -22,7 +22,8 @@
     "uuid": "^8.3.2",
     "vite-plugin-pages": "^0.24.3",
     "vue": "^3.2.37",
-    "vue-router": "^4.0.16"
+    "vue-router": "^4.0.16",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@progress/kendo-licensing": "^1.2.2",
@@ -41,6 +42,7 @@
     "@types/jsdom": "^16.2.14",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^16.11.41",
+    "@types/uuid": "^8.3.4",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",

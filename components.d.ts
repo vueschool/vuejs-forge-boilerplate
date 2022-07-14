@@ -8,13 +8,10 @@ declare module '@vue/runtime-core' {
     AppButton: typeof import('./src/components/AppButton.vue')['default']
     AppLayout: typeof import('./src/components/AppLayout.vue')['default']
     BoardCard: typeof import('./src/components/BoardCard.vue')['default']
-    BoardWidget: typeof import('./src/components/BoardWidget.vue')['default']
-    CustomHeader: typeof import("./src/components/layout/custom-header.vue")["default"];
-    Header: typeof import("./src/components/layout/Header.vue")["default"];
-    Layout: typeof import("./src/components/Layout.vue")["default"];
-    Navbar: typeof import("./src/components/layout/Navbar.vue")["default"];
+    DragAndDropArea: typeof import('./src/components/DragAndDropArea.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TaskCard: typeof import('./src/components/TaskCard.vue')['default']
   }
 }
 
