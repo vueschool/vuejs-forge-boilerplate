@@ -27,7 +27,7 @@ console.log("asdddd",boardsStore)
     <span v-else-if="error">Error: {{ error.message }}</span>
     <BoardCard
       v-else-if="result && result.boardsList"
-      v-for="(board, index) in boardsStore.boards"
+      v-for="(board, index) in result.boardsList.items"
       :key="index"
       :board="board"
     />
