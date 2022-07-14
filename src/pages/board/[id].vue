@@ -5,5 +5,5 @@ const props = defineProps<{
 }>();
 </script>
 <template>
-  <div>Board info {{ id }}</div>
+  <div>Board info {{ props.id }}</div>
 </template>
