@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStore } from '@/store/index'
+import { useBoardsStore } from '@/store/boards/index'
 import { useQuery } from "@vue/apollo-composable";
 import gql from "graphql-tag";
 
@@ -16,6 +16,10 @@ const { result, loading, error } = useQuery(gql`
     }
   }
 `);
+
+const boardsStore = useBoardsStore();
+boardsStore.getBoards();
+console.log("asdddd",boardsStore)
 </script>
 <template>
   <div class="mx-16 my-16 flex w-full">
@@ -23,7 +27,7 @@ const { result, loading, error } = useQuery(gql`
     <span v-else-if="error">Error: {{ error.message }}</span>
     <BoardCard
       v-else-if="result && result.boardsList"
-      v-for="(board, index) in result.boardsList.items"
+      v-for="(board, index) in boardsStore.boards"
       :key="index"
       :board="board"
     />
