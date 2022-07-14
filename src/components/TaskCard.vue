@@ -9,11 +9,10 @@ import type { Task } from "@/types";
 const props = defineProps<{
   task: Task;
 }>();
-console.log("Task: ", props.task);
 </script>
 <template>
   <RouterLink :to="`/boards/${$route.params.id}/tasks/${task.id}`">
-    <Card>
+    <Card class="rounded-full">
       <CardHeader>
         <div class="flex justify-between">
           <CardTitle>

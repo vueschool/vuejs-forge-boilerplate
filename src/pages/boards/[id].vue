@@ -32,13 +32,20 @@ const { result, loading, error } = useQuery(gql`
 `);
 </script>
 <template>
-  <div>Board info {{ id }}</div>
   <span v-if="loading">Loading your boards...</span>
   <span v-else-if="error">Error: {{ error.message }}</span>
-  <DragAndDropArea
+
+  <div
     v-else-if="result && result.boardsList.items"
-    :columns="result.boardsList.items[0].columns.items"
-    :board="result.boardsList.items[0]"
-    @update="updateBoard"
-  />
+    class="h-full bg-gradient-to-b from-[#283048] to-[#859398] p-3"
+  >
+    <h1 class="font-bold text-xl capitalize text-white mb-4">
+      {{ result.boardsList.items[0].title }}
+    </h1>
+    <DragAndDropArea
+      :columns="result.boardsList.items[0].columns.items"
+      :board="result.boardsList.items[0]"
+      @update="updateBoard"
+    />
+  </div>
 </template>
