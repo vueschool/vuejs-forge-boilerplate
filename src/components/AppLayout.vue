@@ -13,7 +13,7 @@ const routeName = computed(() => route.name);
   <div class="flex h-[93vh] pt-10">
     <AppNavBar v-if="routeName !== 'board-id'" />
     <BoardNavBar v-else />
-    <section class="overflow-x-auto ml-10">
+    <section class="overflow-x-auto ml-10 min-w-full">
       <transition>
         <RouterView />
       </transition>
